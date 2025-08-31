@@ -1,0 +1,30 @@
+<project name="ProjetoExemplo" default="jar" basedir="../..">
+
+    <!-- Variáveis -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+
+    <!-- Compilar -->
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+    </target>
+
+    <!-- Gerar JAR -->
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/ProjetoExemplo.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="br.com.teste.HelloWorld"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Limpar build -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+</project>
